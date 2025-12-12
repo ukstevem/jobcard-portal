@@ -1,0 +1,157 @@
+[
+  {
+    "table_name": "jobcard_hse_questions",
+    "index_name": "jobcard_hse_questions_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_hse_questions_pkey ON public.jobcard_hse_questions USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "index_name": "jobcard_hse_questions_topic_id_idx",
+    "index_definition": "CREATE INDEX jobcard_hse_questions_topic_id_idx ON public.jobcard_hse_questions USING btree (topic_id)"
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "index_name": "jobcard_hse_topics_code_key",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_hse_topics_code_key ON public.jobcard_hse_topics USING btree (code)"
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "index_name": "jobcard_hse_topics_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_hse_topics_pkey ON public.jobcard_hse_topics USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "index_name": "jobcard_project_members_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_project_members_pkey ON public.jobcard_project_members USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "index_name": "jobcard_project_members_projectnumber_user_id_key",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_project_members_projectnumber_user_id_key ON public.jobcard_project_members USING btree (projectnumber, user_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "index_name": "jobcard_task_hse_responses_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_task_hse_responses_pkey ON public.jobcard_task_hse_responses USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "index_name": "jobcard_task_hse_responses_question_id_idx",
+    "index_definition": "CREATE INDEX jobcard_task_hse_responses_question_id_idx ON public.jobcard_task_hse_responses USING btree (question_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "index_name": "jobcard_task_hse_responses_task_id_idx",
+    "index_definition": "CREATE INDEX jobcard_task_hse_responses_task_id_idx ON public.jobcard_task_hse_responses USING btree (task_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "index_name": "jobcard_task_hse_responses_task_id_question_id_key",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_task_hse_responses_task_id_question_id_key ON public.jobcard_task_hse_responses USING btree (task_id, question_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "index_name": "jobcard_task_hse_topics_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_task_hse_topics_pkey ON public.jobcard_task_hse_topics USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "index_name": "jobcard_task_hse_topics_task_id_idx",
+    "index_definition": "CREATE INDEX jobcard_task_hse_topics_task_id_idx ON public.jobcard_task_hse_topics USING btree (task_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "index_name": "jobcard_task_hse_topics_task_id_topic_id_key",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_task_hse_topics_task_id_topic_id_key ON public.jobcard_task_hse_topics USING btree (task_id, topic_id)"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "index_name": "jobcard_task_hse_topics_topic_id_idx",
+    "index_definition": "CREATE INDEX jobcard_task_hse_topics_topic_id_idx ON public.jobcard_task_hse_topics USING btree (topic_id)"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "index_name": "jobcard_tasks_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_tasks_pkey ON public.jobcard_tasks USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "index_name": "jobcard_tasks_project_item_idx",
+    "index_definition": "CREATE INDEX jobcard_tasks_project_item_idx ON public.jobcard_tasks USING btree (projectnumber, item_seq)"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "index_name": "jobcard_tasks_qr_slug_key",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_tasks_qr_slug_key ON public.jobcard_tasks USING btree (qr_slug)"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "index_name": "jobcard_tasks_wbs_node_id_idx",
+    "index_definition": "CREATE INDEX jobcard_tasks_wbs_node_id_idx ON public.jobcard_tasks USING btree (wbs_node_id)"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "index_name": "jobcard_wbs_nodes_parent_id_idx",
+    "index_definition": "CREATE INDEX jobcard_wbs_nodes_parent_id_idx ON public.jobcard_wbs_nodes USING btree (parent_id)"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "index_name": "jobcard_wbs_nodes_pkey",
+    "index_definition": "CREATE UNIQUE INDEX jobcard_wbs_nodes_pkey ON public.jobcard_wbs_nodes USING btree (id)"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "index_name": "jobcard_wbs_nodes_project_item_idx",
+    "index_definition": "CREATE INDEX jobcard_wbs_nodes_project_item_idx ON public.jobcard_wbs_nodes USING btree (projectnumber, item_seq)"
+  },
+  {
+    "table_name": "project_register",
+    "index_name": "project_register_pkey",
+    "index_definition": "CREATE UNIQUE INDEX project_register_pkey ON public.project_register USING btree (projectnumber)"
+  },
+  {
+    "table_name": "project_register",
+    "index_name": "uq_project_register_projectnumber",
+    "index_definition": "CREATE UNIQUE INDEX uq_project_register_projectnumber ON public.project_register USING btree (projectnumber)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "ix_items_due_date",
+    "index_definition": "CREATE INDEX ix_items_due_date ON public.project_register_items USING btree (due_date)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "ix_items_invoiced",
+    "index_definition": "CREATE INDEX ix_items_invoiced ON public.project_register_items USING btree (invoiced)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "ix_items_projectnumber",
+    "index_definition": "CREATE INDEX ix_items_projectnumber ON public.project_register_items USING btree (projectnumber)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "project_register_items_pkey",
+    "index_definition": "CREATE UNIQUE INDEX project_register_items_pkey ON public.project_register_items USING btree (id)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "project_register_items_projectnumber_item_seq_key",
+    "index_definition": "CREATE UNIQUE INDEX project_register_items_projectnumber_item_seq_key ON public.project_register_items USING btree (projectnumber, item_seq)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "uq_items_pn_hash",
+    "index_definition": "CREATE UNIQUE INDEX uq_items_pn_hash ON public.project_register_items USING btree (projectnumber, source_row_hash)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "uq_pri_project_desc",
+    "index_definition": "CREATE UNIQUE INDEX uq_pri_project_desc ON public.project_register_items USING btree (projectnumber, line_desc)"
+  },
+  {
+    "table_name": "project_register_items",
+    "index_name": "uq_pri_projectnumber_itemseq",
+    "index_definition": "CREATE UNIQUE INDEX uq_pri_projectnumber_itemseq ON public.project_register_items USING btree (projectnumber, item_seq)"
+  }
+]

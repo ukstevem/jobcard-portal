@@ -74,11 +74,4 @@ export default function AuthButton() {
       </button>
     );
   }
-
-  return (
-    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      <span>Signed in as {session.user.email}</span>
-      <button onClick={handleLogout}>Sign out</button>
-    </div>
-  );
 }

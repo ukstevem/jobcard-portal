@@ -1,0 +1,794 @@
+[
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_4_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_5_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "2200_146052_6_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "jobcard_hse_questions_topic_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "topic_id",
+    "foreign_table_name": "jobcard_hse_topics",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_hse_questions",
+    "constraint_name": "jobcard_hse_questions_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_hse_questions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "2200_146021_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "2200_146021_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "2200_146021_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "2200_146021_6_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "jobcard_hse_topics_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_hse_topics",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_hse_topics",
+    "constraint_name": "jobcard_hse_topics_code_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "code",
+    "foreign_table_name": "jobcard_hse_topics",
+    "foreign_column_name": "code"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "2200_145978_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "2200_145978_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "2200_145978_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "2200_145978_4_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "2200_145978_5_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_projectnumber_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_user_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "user_id",
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_project_members",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_projectnumber_user_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "jobcard_project_members",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_projectnumber_user_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "user_id",
+    "foreign_table_name": "jobcard_project_members",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_projectnumber_user_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "user_id",
+    "foreign_table_name": "jobcard_project_members",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_project_members",
+    "constraint_name": "jobcard_project_members_projectnumber_user_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "jobcard_project_members",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "2200_146132_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "2200_146132_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "2200_146132_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "2200_146132_7_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_question_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "question_id",
+    "foreign_table_name": "jobcard_hse_questions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_responder_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "responder_id",
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_task_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_tasks",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_task_hse_responses",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_task_id_question_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_task_hse_responses",
+    "foreign_column_name": "question_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_task_id_question_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_task_hse_responses",
+    "foreign_column_name": "task_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_task_id_question_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "question_id",
+    "foreign_table_name": "jobcard_task_hse_responses",
+    "foreign_column_name": "question_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_responses",
+    "constraint_name": "jobcard_task_hse_responses_task_id_question_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "question_id",
+    "foreign_table_name": "jobcard_task_hse_responses",
+    "foreign_column_name": "task_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "2200_146090_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "2200_146090_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "2200_146090_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "2200_146090_4_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_task_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_tasks",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_topic_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "topic_id",
+    "foreign_table_name": "jobcard_hse_topics",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_task_hse_topics",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_task_id_topic_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "topic_id",
+    "foreign_table_name": "jobcard_task_hse_topics",
+    "foreign_column_name": "topic_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_task_id_topic_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "topic_id",
+    "foreign_table_name": "jobcard_task_hse_topics",
+    "foreign_column_name": "task_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_task_id_topic_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_task_hse_topics",
+    "foreign_column_name": "topic_id"
+  },
+  {
+    "table_name": "jobcard_task_hse_topics",
+    "constraint_name": "jobcard_task_hse_topics_task_id_topic_id_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "task_id",
+    "foreign_table_name": "jobcard_task_hse_topics",
+    "foreign_column_name": "task_id"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_14_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_4_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_5_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "2200_145924_8_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_created_by_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "created_by",
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_supervisor_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "supervisor_id",
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_wbs_node_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "wbs_node_id",
+    "foreign_table_name": "jobcard_wbs_nodes",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_tasks",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_tasks",
+    "constraint_name": "jobcard_tasks_qr_slug_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "qr_slug",
+    "foreign_table_name": "jobcard_tasks",
+    "foreign_column_name": "qr_slug"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_3_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_5_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_6_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_8_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "2200_145876_9_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_created_by_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "created_by",
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_parent_id_fkey",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "parent_id",
+    "foreign_table_name": "jobcard_wbs_nodes",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_project_item_fk",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "jobcard_wbs_nodes",
+    "constraint_name": "jobcard_wbs_nodes_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "jobcard_wbs_nodes",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "project_register",
+    "constraint_name": "2200_43580_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "project_register",
+    "constraint_name": "project_register_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register",
+    "constraint_name": "uq_project_register_projectnumber",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "2200_43591_1_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "2200_43591_2_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "2200_43591_4_not_null",
+    "constraint_type": "CHECK",
+    "column_name": null,
+    "foreign_table_name": null,
+    "foreign_column_name": null
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "fk_items_projectnumber",
+    "constraint_type": "FOREIGN KEY",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "project_register_items_pkey",
+    "constraint_type": "PRIMARY KEY",
+    "column_name": "id",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "project_register_items_projectnumber_item_seq_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "project_register_items_projectnumber_item_seq_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "project_register_items_projectnumber_item_seq_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "project_register_items_projectnumber_item_seq_key",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_project_desc",
+    "constraint_type": "UNIQUE",
+    "column_name": "line_desc",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "line_desc"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_project_desc",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_project_desc",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "line_desc"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_project_desc",
+    "constraint_type": "UNIQUE",
+    "column_name": "line_desc",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_projectnumber_itemseq",
+    "constraint_type": "UNIQUE",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_projectnumber_itemseq",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "projectnumber"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_projectnumber_itemseq",
+    "constraint_type": "UNIQUE",
+    "column_name": "projectnumber",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  },
+  {
+    "table_name": "project_register_items",
+    "constraint_name": "uq_pri_projectnumber_itemseq",
+    "constraint_type": "UNIQUE",
+    "column_name": "item_seq",
+    "foreign_table_name": "project_register_items",
+    "foreign_column_name": "item_seq"
+  }
+]
