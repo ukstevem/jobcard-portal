@@ -50,6 +50,7 @@ export default function AuthButton() {
   await supabase.auth.signInWithOAuth({
     provider: 'azure',
     options: {
+      scopes: "email profile",
       redirectTo: `${window.location.origin}/dashboard`,
       queryParams: {
         // 'select_account' = always show the account chooser
