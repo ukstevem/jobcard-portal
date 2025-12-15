@@ -1,0 +1,353 @@
+[
+  {
+    "schemaname": "public",
+    "tablename": "auth_users",
+    "policyname": "auth_users_insert_self",
+    "cmd": "INSERT",
+    "roles": "{authenticated}",
+    "qual": null,
+    "with_check": "(id = auth.uid())"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "auth_users",
+    "policyname": "auth_users_select_self_or_superuser",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "((id = auth.uid()) OR jobcard_is_superuser())",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "auth_users",
+    "policyname": "auth_users_update_self_or_superuser",
+    "cmd": "UPDATE",
+    "roles": "{authenticated}",
+    "qual": "((id = auth.uid()) OR jobcard_is_superuser())",
+    "with_check": "((id = auth.uid()) OR jobcard_is_superuser())"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "device_status",
+    "policyname": "service_role_only",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(auth.role() = 'service_role'::text)",
+    "with_check": "(auth.role() = 'service_role'::text)"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_hse_questions",
+    "policyname": "jobcard_hse_questions_select_all",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_hse_topics",
+    "policyname": "jobcard_hse_topics_select_all",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_delete",
+    "cmd": "DELETE",
+    "roles": "{public}",
+    "qual": "(is_role('admin'::text) OR (jobcard_has_project_role(projectnumber, ARRAY['manager'::text, 'admin'::text]) AND (role <> 'admin'::text)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_insert",
+    "cmd": "INSERT",
+    "roles": "{public}",
+    "qual": null,
+    "with_check": "(is_role('admin'::text) OR (jobcard_has_project_role(projectnumber, ARRAY['manager'::text, 'admin'::text]) AND (role = ANY (ARRAY['member'::text, 'manager'::text]))))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_select",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "((user_id = auth.uid()) OR is_role('admin'::text) OR jobcard_has_project_role(projectnumber, ARRAY['manager'::text, 'admin'::text]))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_select_self_or_superuser",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "((user_id = auth.uid()) OR jobcard_is_superuser())",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_update",
+    "cmd": "UPDATE",
+    "roles": "{public}",
+    "qual": "(is_role('admin'::text) OR (jobcard_has_project_role(projectnumber, ARRAY['manager'::text, 'admin'::text]) AND (role <> 'admin'::text)))",
+    "with_check": "(is_role('admin'::text) OR (jobcard_has_project_role(projectnumber, ARRAY['manager'::text, 'admin'::text]) AND (role = ANY (ARRAY['member'::text, 'manager'::text]))))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_project_members",
+    "policyname": "jobcard_project_members_write_superuser",
+    "cmd": "ALL",
+    "roles": "{authenticated}",
+    "qual": "jobcard_is_superuser()",
+    "with_check": "jobcard_is_superuser()"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_task_hse_responses",
+    "policyname": "jobcard_task_hse_responses_insert_project_members",
+    "cmd": "INSERT",
+    "roles": "{public}",
+    "qual": null,
+    "with_check": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()))))\n  WHERE (t.id = jobcard_task_hse_responses.task_id)))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_task_hse_responses",
+    "policyname": "jobcard_task_hse_responses_select_project_members",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()))))\n  WHERE (t.id = jobcard_task_hse_responses.task_id)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_task_hse_responses",
+    "policyname": "jobcard_task_hse_responses_update_delete_by_project_managers",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))\n  WHERE (t.id = jobcard_task_hse_responses.task_id)))",
+    "with_check": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))\n  WHERE (t.id = jobcard_task_hse_responses.task_id)))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_task_hse_topics",
+    "policyname": "jobcard_task_hse_topics_manage_by_project_managers",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))\n  WHERE (t.id = jobcard_task_hse_topics.task_id)))",
+    "with_check": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))\n  WHERE (t.id = jobcard_task_hse_topics.task_id)))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_task_hse_topics",
+    "policyname": "jobcard_task_hse_topics_select_project_members",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM (jobcard_tasks t\n     JOIN jobcard_project_members m ON (((m.projectnumber = t.projectnumber) AND (m.user_id = auth.uid()))))\n  WHERE (t.id = jobcard_task_hse_topics.task_id)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_tasks",
+    "policyname": "jobcard_tasks_manage_by_project_managers",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_tasks.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))",
+    "with_check": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_tasks.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_tasks",
+    "policyname": "jobcard_tasks_select_by_project_membership",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_tasks.projectnumber) AND (m.user_id = auth.uid()))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_tasks",
+    "policyname": "jobcard_tasks_select_project_members",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_tasks.projectnumber) AND (m.user_id = auth.uid()))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_wbs_nodes",
+    "policyname": "jobcard_wbs_nodes_manage_by_project_managers",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_wbs_nodes.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))",
+    "with_check": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_wbs_nodes.projectnumber) AND (m.user_id = auth.uid()) AND (m.role = ANY (ARRAY['manager'::text, 'admin'::text])))))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "jobcard_wbs_nodes",
+    "policyname": "jobcard_wbs_nodes_select_project_members",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = jobcard_wbs_nodes.projectnumber) AND (m.user_id = auth.uid()))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_item_scopes",
+    "policyname": "pis_delete_admin",
+    "cmd": "DELETE",
+    "roles": "{authenticated}",
+    "qual": "is_role('admin'::text)",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_item_scopes",
+    "policyname": "pis_insert_watcher",
+    "cmd": "INSERT",
+    "roles": "{authenticated}",
+    "qual": null,
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_item_scopes",
+    "policyname": "pis_select_auth",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_item_scopes",
+    "policyname": "pis_update_watcher",
+    "cmd": "UPDATE",
+    "roles": "{authenticated}",
+    "qual": "has_any_role(ARRAY['admin'::text, 'watcher'::text])",
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register",
+    "policyname": "pr_delete_admin",
+    "cmd": "DELETE",
+    "roles": "{authenticated}",
+    "qual": "is_role('admin'::text)",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register",
+    "policyname": "pr_insert_watcher",
+    "cmd": "INSERT",
+    "roles": "{authenticated}",
+    "qual": null,
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register",
+    "policyname": "pr_select_admin_all",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "has_any_role(ARRAY['admin'::text, 'watcher'::text])",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register",
+    "policyname": "pr_select_member_projects",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = project_register.projectnumber) AND (m.user_id = auth.uid()))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register",
+    "policyname": "pr_update_watcher",
+    "cmd": "UPDATE",
+    "roles": "{authenticated}",
+    "qual": "has_any_role(ARRAY['admin'::text, 'watcher'::text])",
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register_items",
+    "policyname": "pri_delete_admin",
+    "cmd": "DELETE",
+    "roles": "{authenticated}",
+    "qual": "is_role('admin'::text)",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register_items",
+    "policyname": "pri_insert_watcher",
+    "cmd": "INSERT",
+    "roles": "{authenticated}",
+    "qual": null,
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register_items",
+    "policyname": "pri_select_admin_all",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "has_any_role(ARRAY['admin'::text, 'watcher'::text])",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register_items",
+    "policyname": "pri_select_member_items",
+    "cmd": "SELECT",
+    "roles": "{authenticated}",
+    "qual": "(EXISTS ( SELECT 1\n   FROM jobcard_project_members m\n  WHERE ((m.projectnumber = project_register_items.projectnumber) AND (m.user_id = auth.uid()))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "project_register_items",
+    "policyname": "pri_update_watcher",
+    "cmd": "UPDATE",
+    "roles": "{authenticated}",
+    "qual": "has_any_role(ARRAY['admin'::text, 'watcher'::text])",
+    "with_check": "has_any_role(ARRAY['admin'::text, 'watcher'::text])"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "projects",
+    "policyname": "Enable read access for all users",
+    "cmd": "SELECT",
+    "roles": "{public}",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "timecard_events",
+    "policyname": "service_role_only",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "(auth.role() = 'service_role'::text)",
+    "with_check": "(auth.role() = 'service_role'::text)"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "transmittals",
+    "policyname": "Allow all",
+    "cmd": "ALL",
+    "roles": "{public}",
+    "qual": "true",
+    "with_check": null
+  }
+]

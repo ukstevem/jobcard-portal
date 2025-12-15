@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
+import { useRouter } from 'next/navigation';
+
 
 type ProjectMembership = {
   projectnumber: string;
@@ -21,6 +23,16 @@ export default function JobcardList() {
   const [rolesByProject, setRolesByProject] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const router = useRouter();
+
+  function openWbs(projectnumber: string, itemSeq: number) {
+    if (!projectnumber || !Number.isFinite(itemSeq)) return;
+
+    router.push(
+      `/dashboard/${encodeURIComponent(projectnumber)}/${itemSeq}`
+    );
+  }
 
   useEffect(() => {
     let isMounted = true;
@@ -138,16 +150,13 @@ export default function JobcardList() {
                 Project
               </th>
               <th className="text-left px-4 py-2 font-medium text-xs text-slate-500 uppercase tracking-wide">
-                Item
-              </th>
-              <th className="text-left px-4 py-2 font-medium text-xs text-slate-500 uppercase tracking-wide">
                 Description
               </th>
-              <th className="text-left px-4 py-2 font-medium text-xs text-slate-500 uppercase tracking-wide">
-                Role
+              <th className="text-right px-4 py-2 font-medium text-xs text-slate-500 uppercase tracking-wide">
+                Jobcards
               </th>
               <th className="text-right px-4 py-2 font-medium text-xs text-slate-500 uppercase tracking-wide">
-                Open
+                Completed
               </th>
             </tr>
           </thead>
@@ -157,20 +166,29 @@ export default function JobcardList() {
                 2,
                 '0'
               )}`;
-              const role = rolesByProject[it.projectnumber] ?? 'member';
+
+            // placeholders for now
+            const totalJobcards = 0;
+            const completedJobcards = 0;
 
               return (
                 <tr
                   key={it.id}
-                  className="border-b last:border-b-0 hover:bg-slate-50/60"
+                  onClick={() => openWbs(it.projectnumber, it.item_seq)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openWbs(it.projectnumber, it.item_seq);
+                    }
+                  }}
+                  role="link"
+                  tabIndex={0}
+                  className="border-b last:border-b-0 hover:bg-slate-50/60 cursor-pointer"
                 >
                   <td className="px-4 py-2 align-top">
                     <span className="font-mono text-xs bg-slate-100 px-2 py-0.5 rounded">
                       {it.projectnumber}
                     </span>
-                  </td>
-                  <td className="px-4 py-2 align-top font-mono text-xs">
-                    {String(it.item_seq).padStart(2, '0')}
                   </td>
                   <td className="px-4 py-2 align-top">
                     <div className="text-sm">{it.line_desc}</div>
@@ -178,18 +196,11 @@ export default function JobcardList() {
                       WBS base: {itemCode}
                     </div>
                   </td>
-                  <td className="px-4 py-2 align-top">
-                    <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] uppercase tracking-wide">
-                      {role}
-                    </span>
+                  <td className="px-4 py-2 align-top text-right font-mono text-xs">
+                    {totalJobcards}
                   </td>
-                  <td className="px-4 py-2 align-top text-right">
-                    <Link
-                      href={`/dashboard/${it.projectnumber}/${it.item_seq}`}
-                      className="inline-flex items-center rounded-full border px-3 py-1 text-xs hover:bg-slate-900 hover:text-white transition-colors"
-                    >
-                      Open WBS
-                    </Link>
+                  <td className="px-4 py-2 align-top text-right font-mono text-xs">
+                    {completedJobcards}
                   </td>
                 </tr>
               );

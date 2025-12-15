@@ -1001,6 +1001,12 @@ export default function ProjectItemClient({
     const load = async () => {
       setLoading(true);
       setError(null);
+      console.groupCollapsed(`[WBS load] ${projectnumber} / itemSeq=${itemSeq}`);
+      console.log('inputs', { projectnumber, itemSeq });
+      console.log('isFinite(itemSeq)?', Number.isFinite(itemSeq));
+
+      const userRes = await supabase.auth.getUser();
+      const user = userRes.data?.user ?? null;
 
       const [itemRes, wbsRes, tasksRes, memberRes] = await Promise.all([
         supabase
@@ -1009,29 +1015,36 @@ export default function ProjectItemClient({
           .eq('projectnumber', projectnumber)
           .eq('item_seq', itemSeq)
           .maybeSingle<ProjectItem>(),
+
         supabase
           .from('jobcard_wbs_nodes')
-          .select(
-            'id, projectnumber, item_seq, parent_id, code, name, description, sort_order'
-          )
+          .select('id, projectnumber, item_seq, parent_id, code, name, description, sort_order')
           .eq('projectnumber', projectnumber)
           .eq('item_seq', itemSeq)
           .order('sort_order', { ascending: true }),
+
         supabase
           .from('jobcard_tasks')
-          .select(
-            'id, projectnumber, item_seq, wbs_node_id, title, description, status, qr_slug, created_at'
-          )
+          .select('id, projectnumber, item_seq, wbs_node_id, title, description, status, qr_slug, created_at')
           .eq('projectnumber', projectnumber)
           .eq('item_seq', itemSeq)
           .order('created_at', { ascending: true }),
-        supabase
-          .from('jobcard_project_members')
-          .select('role')
-          .eq('projectnumber', projectnumber)
-          .maybeSingle<{ role: string }>(),
+
+        // ✅ membership must be per-user, not “any member on the project”
+        user
+          ? supabase
+              .from('jobcard_project_members')
+              .select('role')
+              .eq('projectnumber', projectnumber)
+              .eq('user_id', user.id)
+              .maybeSingle<{ role: string }>()
+          : Promise.resolve({ data: null as any, error: null as any }),
       ]);
 
+
+      console.log('memberRes', memberRes);
+
+      
       if (!alive) return;
 
       const { data: itemData, error: itemError } = itemRes;
@@ -1060,6 +1073,8 @@ export default function ProjectItemClient({
       setTasks((taskData || []) as JobcardTask[]);
       setRole((memberData?.role as ProjectRole) ?? null);
       setLoading(false);
+
+    console.groupEnd();
     };
 
     load();
