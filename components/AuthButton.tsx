@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { Button } from "@/components/ui/button";
 
 type Session = Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session'];
 
@@ -70,7 +71,11 @@ export default function AuthButton() {
 
   if (!session) {
     return (
-      <button onClick={handleLogin}>
+      <button
+        type="button"
+        onClick={handleLogin}
+        className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm hover:opacity-90 cursor-pointer"
+      >
         Sign in with Azure
       </button>
     );
