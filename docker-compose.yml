@@ -9,7 +9,7 @@ services:
     container_name: jobcard-portal
     restart: unless-stopped
     ports:
-      - "8000:3000"
+      - "80:3000"
     environment:
       NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
