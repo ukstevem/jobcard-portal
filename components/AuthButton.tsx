@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import { Button } from "@/components/ui/button";
 
 type Session = Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session'];
 
