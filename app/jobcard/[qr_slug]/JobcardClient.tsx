@@ -190,6 +190,38 @@ export default function JobcardClient({ qrSlug }: { qrSlug: string }) {
       const itemSeq = taskRow.item_seq;
       const taskId = taskRow.id;
 
+      // 2a) Identify the current user so we only fetch *their* membership row
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
+
+      if (!alive) return;
+
+      if (userError) {
+        setError(userError.message);
+        setItem(null);
+        setNodes([]);
+        setRole(null);
+        setAllTopics([]);
+        setAllQuestions([]);
+        setResponses([]);
+        setAttachedTopicIds([]);
+        setLoading(false);
+        return;
+      }
+
+      const userId = user?.id ?? null;
+      const memberPromise = userId
+        ? supabase
+            .from('jobcard_project_members')
+            .select('role')
+            .eq('projectnumber', projectnumber)
+            .eq('user_id', userId)
+            .maybeSingle()
+        : Promise.resolve({ data: null, error: null } as any);
+
+
       // 2) Load item, WBS nodes, membership role, HSE topic links, responses, topics, questions
       const [
         itemRes,
@@ -211,11 +243,7 @@ export default function JobcardClient({ qrSlug }: { qrSlug: string }) {
           .select('*')
           .eq('projectnumber', projectnumber)
           .eq('item_seq', itemSeq),
-        supabase
-          .from('jobcard_project_members')
-          .select('role')
-          .eq('projectnumber', projectnumber)
-          .maybeSingle(),
+        memberPromise,
         supabase
           .from('jobcard_task_hse_topics')
           .select('topic_id')
