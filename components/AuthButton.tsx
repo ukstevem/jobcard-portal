@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
-type Session = Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session'];
+type Session =
+  Awaited<ReturnType<typeof supabase.auth.getSession>>["data"]["session"];
 
 export default function AuthButton() {
+  const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const APP_URL = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
 
   useEffect(() => {
     let subscribed = true;
@@ -16,6 +20,8 @@ export default function AuthButton() {
       if (!subscribed) return;
       setSession(data.session);
       setLoading(false);
+
+      if (data.session) router.replace("/dashboard");
     });
 
     const {
@@ -23,60 +29,40 @@ export default function AuthButton() {
     } = supabase.auth.onAuthStateChange((_event, newSession) => {
       if (!subscribed) return;
       setSession(newSession);
+
+      if (newSession) router.replace("/dashboard");
     });
 
     return () => {
       subscribed = false;
       subscription.unsubscribe();
     };
-  }, []);
-
-
-  // Allows SSO and no login challenge after initital login/out
-
-  // async function handleLogin() {
-  //   // Azure provider must be enabled in Supabase Auth settings
-  //   await supabase.auth.signInWithOAuth({
-  //     provider: 'azure',
-  //     options: {
-  //       redirectTo: `${window.location.origin}/dashboard`,
-  //     },
-  //   });
-  // }
-
-  // Forces login challenge after initital login/out
+  }, [router]);
 
   async function handleLogin() {
-  await supabase.auth.signInWithOAuth({
-    provider: 'azure',
-    options: {
-      scopes: "email profile",
-      redirectTo: `${window.location.origin}/dashboard`,
-      queryParams: {
-        // 'select_account' = always show the account chooser
-        // Use 'login' if you want to force re-entering credentials every time
-        prompt: 'select_account',
+    await supabase.auth.signInWithOAuth({
+      provider: "azure",
+      options: {
+        scopes: "email profile",
+        // Safer for deployment: always return to "/",
+        // then the AuthButton will redirect to "/dashboard".
+        redirectTo: `${APP_URL}/dashboard`,
+        queryParams: { prompt: "select_account" },
       },
-    },
-  });
-}
-
-
-  async function handleLogout() {
-    await supabase.auth.signOut();
+    });
   }
 
   if (loading) return <button disabled>Checking login...</button>;
 
-  if (!session) {
-    return (
-      <button
-        type="button"
-        onClick={handleLogin}
-        className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm hover:opacity-90 cursor-pointer"
-      >
-        Sign in with Azure
-      </button>
-    );
-  }
+  if (session) return <div className="text-sm text-gray-600">Redirecting…</div>;
+
+  return (
+    <button
+      type="button"
+      onClick={handleLogin}
+      className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm hover:opacity-90 cursor-pointer"
+    >
+      Sign in with Azure
+    </button>
+  );
 }

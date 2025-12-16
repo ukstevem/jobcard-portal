@@ -1,16 +1,7 @@
 import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { supabase } from '@/lib/supabaseClient';
 
-export default async function HomePage() {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  // If already signed in (including immediately after OAuth callback), go straight to dashboard
-  if (session) redirect("/dashboard");
-
+export default function HomePage() {
   return (
     <main style={{ padding: "2rem", fontFamily: "system-ui" }}>
       <h1>Jobcard Portal (Auth Test)</h1>
